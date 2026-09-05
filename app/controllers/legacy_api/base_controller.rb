@@ -32,8 +32,13 @@ module LegacyAPI
 
     before_action :start_timer
     before_action :authenticate_as_server
+    before_action :set_server
 
     private
+
+    def set_server
+      @server = @current_credential&.server
+    end
 
     # The Moonrope API spec allows for parameters to be provided in the body
     # along with the application/json content type or they can be provided,
